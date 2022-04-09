@@ -1,0 +1,91 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+# type Todo {
+#   id: ID!
+#   text: String!
+#   done: Boolean!
+#   user: User!
+# }
+
+# type User {
+#   id: ID!
+#   name: String!
+# }
+
+# type Query {
+#   todos: [Todo!]!
+# }
+
+# input NewTodo {
+#   text: String!
+#   userId: String!
+# }
+
+# type Mutation {
+#   createTodo(input: NewTodo!): Todo!
+# }
+
+input ProjectWhereUniqueInput {
+  id: String
+  name: String
+  slug: String
+}
+
+type Query {
+  authors: [Author!]!
+  projects: [Project!]!
+  author: Author!
+  project(where: ProjectWhereUniqueInput): Project!
+}
+
+input NewProject {
+  name: String!
+  description: String!
+}
+
+type Mutation {
+  createProject(input: NewProject!): Project!
+}
+
+scalar DateTime
+
+type Image {
+  id: ID!
+  height: Float
+  width: Float
+  url: String!
+  mimeType: String
+  fileName: String!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type Author {
+  id: ID!
+  name: String!
+  intro: String!
+  bio: String
+  slug: String
+  picture: Image!
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+}
+
+type Project {
+  id: ID!
+  name: String!
+  slug: String
+  description: String
+  demo: String
+  images: [Image!]
+  createdAt: DateTime
+  updatedAt: DateTime
+  publishedAt: DateTime
+  tags: [String!]
+}
+
+
